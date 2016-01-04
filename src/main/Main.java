@@ -1,40 +1,43 @@
 package main;
-
+import javax.swing.*;
+import java.awt.*;
 
 public class Main {
-
-    //private Algorithm alg;
-
     public static void main(String[] args) {
+        /* Use an appropriate Look and Feel */
+        try {
+            //UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+            UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+        } catch (UnsupportedLookAndFeelException ex) {
+            ex.printStackTrace();
+        } catch (IllegalAccessException ex) {
+            ex.printStackTrace();
+        } catch (InstantiationException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        /* Turn off metal's use of bold fonts */
+        UIManager.put("swing.boldMetal", Boolean.FALSE);
 
+        //Schedule a job for the event dispatch thread:
+        //creating and showing this application's GUI.
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                createDes();
+                createAndShowGUI();
             }
         });
-
     }
-    private static void createDes() {
-        Algorithm alg = new Algorithm();
-        String wynik;
-        String wiadomosc="message123";
-        String klucz="8bytekey";
-        alg.AddKey(klucz);
-        alg.AddMsg(wiadomosc);
-        //alg.Run("szyfruj");
-        System.out.println("Szyfruj");
-        System.out.println("klucz: "+klucz+" wiadomosc: "+wiadomosc);
-        wynik=alg.RunDes("szyfruj");
 
-        System.out.println("wynik:"+ wynik);
+    private static void createAndShowGUI() {
+        JFrame frame = new JFrame("DES");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(new Okno(), BorderLayout.CENTER);
 
-        System.out.println("odszyfruj: " + wynik);
-        alg.AddMsg(wynik);
-        wynik=alg.Run("rozszyfruj");
-        System.out.println("wynik:"+ wynik);
-        //System.out.println("wynik");
-        //alg.AddMsg(wynik);
-
-
+        frame.pack();
+        //frame.setSize(800, 600);
+        frame.setLocation(100, 100);
+        frame.requestFocus();
+        frame.setVisible(true);
     }
 }
