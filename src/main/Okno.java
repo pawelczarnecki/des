@@ -31,11 +31,11 @@ public class Okno extends JPanel {//implements ActionListener {
 
 
 
-    jTextField1.setText("jTextField1");
+    jTextField1.setText("0123456789ABCDEF");
 
-    jTextField2.setText("jTextField2");
+    jTextField2.setText("133457799BBCDFF1");
 
-    jTextField3.setText("jTextField3");
+    jTextField3.setText("85E813540F0AB405");
 
     jLabel1.setText("Wiadomosc");
 
@@ -51,6 +51,11 @@ public class Okno extends JPanel {//implements ActionListener {
     });
 
     jButton2.setText("Dectrypt");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
     jPanel1.setLayout(jPanel1Layout);
@@ -108,9 +113,55 @@ public class Okno extends JPanel {//implements ActionListener {
     );
 
     //pack();
+
+
 }
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+    private void jButton1ActionPerformed(ActionEvent evt) {
+        try {
+            byte[] theKey = null;
+            byte[] theMsg = null;
+            byte[] theExp = null;
+            //theKey = hexToBytes("133457799BBCDFF1");
+            //theMsg = hexToBytes("0123456789ABCDEF");
+            //theExp = hexToBytes("85E813540F0AB405");
+            theKey = hexToBytes(jTextField2.getText());
+            theMsg = hexToBytes(jTextField1.getText());
+            theExp = hexToBytes(jTextField3.getText());
+            byte[][] subKeys = ChipherDES.getSubkeys(theKey);
+            byte[] theCph = ChipherDES.cipher(theMsg,subKeys,"encrypt");
+            System.out.println("Key     : " + bytesToHex(theKey) + " " + theKey);
+            System.out.println("Message : "+bytesToHex(theMsg)+ " " + theMsg);
+            System.out.println("Cipher  : "+bytesToHex(theCph)+ " " + theCph);
+            System.out.println("Expected: " + bytesToHex(theExp) + " " + theExp);
+            jTextField3.setText(bytesToHex(theCph));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
+
+    }
+    private void jButton2ActionPerformed(ActionEvent evt) {
+        try {
+            byte[] theKey = null;
+            byte[] theMsg = null;
+            byte[] theExp = null;
+            //theKey = hexToBytes("133457799BBCDFF1");
+            //theMsg = hexToBytes("0123456789ABCDEF");
+            //theExp = hexToBytes("85E813540F0AB405");
+            theKey = hexToBytes(jTextField2.getText());
+            theMsg = hexToBytes(jTextField1.getText());
+            theExp = hexToBytes(jTextField3.getText());
+            byte[][] subKeys = ChipherDES.getSubkeys(theKey);
+            byte[] theCph = ChipherDES.cipher(theMsg,subKeys,"decrypt");
+            System.out.println("Key     : " + bytesToHex(theKey) + " " + theKey);
+            System.out.println("Message : "+bytesToHex(theMsg)+ " " + theMsg);
+            System.out.println("Cipher  : "+bytesToHex(theCph)+ " " + theCph);
+            System.out.println("Expected: " + bytesToHex(theExp) + " " + theExp);
+            jTextField3.setText(bytesToHex(theCph));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
     }
     public void actionPerformed(ActionEvent arg0) {
 
@@ -122,5 +173,36 @@ public class Okno extends JPanel {//implements ActionListener {
 
         }
         */
+    }
+    public static byte[] hexToBytes(String str) {
+        if (str==null) {
+            return null;
+        } else if (str.length() < 2) {
+            return null;
+        } else {
+            int len = str.length() / 2;
+            byte[] buffer = new byte[len];
+            for (int i=0; i<len; i++) {
+                buffer[i] = (byte) Integer.parseInt(
+                        str.substring(i*2,i*2+2),16);
+            }
+            return buffer;
+        }
+
+    }
+    public static String bytesToHex(byte[] data) {
+        if (data==null) {
+            return null;
+        } else {
+            int len = data.length;
+            String str = "";
+            for (int i=0; i<len; i++) {
+                if ((data[i]&0xFF)<16) str = str + "0"
+                        + java.lang.Integer.toHexString(data[i]&0xFF);
+                else str = str
+                        + java.lang.Integer.toHexString(data[i]&0xFF);
+            }
+            return str.toUpperCase();
+        }
     }
 }

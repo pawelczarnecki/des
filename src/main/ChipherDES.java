@@ -258,7 +258,7 @@ public class ChipherDES {
         byte newByte = (byte) ((val<<(8-(posBit+1))) | oldByte);
         data[posByte] = newByte;
     }
-    private static byte[] readBytes(String in) throws Exception {
+    public static byte[] readBytes(String in) throws Exception {
         FileInputStream fis = new FileInputStream(in);
         int numOfBytes = fis.available();
         byte[] buffer = new byte[numOfBytes];
