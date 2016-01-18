@@ -3,8 +3,10 @@ package main;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.List;
+import java.util.Random;
 
 public class DesOkno extends JPanel {//implements ActionListener {
 
@@ -82,7 +84,6 @@ public class DesOkno extends JPanel {//implements ActionListener {
         jLabel13 = new JLabel();
         jButton1 = new JButton();
 
-        System.out.println(jTextField2.getText()+"-round DES Linear Cryptanalysis.");
 
         jLabel1.setText("Klucz");
 
@@ -322,16 +323,16 @@ public class DesOkno extends JPanel {//implements ActionListener {
             }
             System.out.println("****************");
             System.out.println("Press Enter to run linear attack...");
-            try {
+            /*try {
                 System.in.read();
             } catch(IOException exn) {
 
             }
-
+*/
             // generate the pairs
             System.out.println("");
             System.out.println("Generating " + numPairs + " pairs...");
-            List<BitSet[]> pairs = DifferentialCryptanalysis.generateRandomPairs(numPairs, key, numRounds);
+            List<BitSet[]> pairs = generateRandomPairs(numPairs, key, numRounds);
             System.out.println("Good pairs: " + pairs.size());
 
             int[][] counts = new int[8][64];
@@ -473,6 +474,47 @@ public class DesOkno extends JPanel {//implements ActionListener {
     public int GetPair()
     {
         return 16;// Integer.parseInt(jTextField3.getText());
+    }
+    public static List<BitSet[]> generateRandomPairs(int pairs, BitSet key,
+                                                     int numRounds) {
+        Random r = new Random();
+        DesImpl des = new DesImpl();
+        List<BitSet[]> sets = new ArrayList<BitSet[]>();
+        for (int i = 0; i < pairs; i++) {
+            // four bloks of 16 bits each
+            BitSet p1 = Util.toBitSet(r.nextInt(65536), 16);
+            BitSet p2 = Util.toBitSet(r.nextInt(65536), 16);
+            BitSet p3 = Util.toBitSet(r.nextInt(65536), 16);
+            BitSet p4 = Util.toBitSet(r.nextInt(65536), 16);
+            BitSet p12 = Util.concatenate(p1, 16, p2, 16);
+            BitSet p34 = Util.concatenate(p3, 16, p4, 16);
+
+            // first pair
+            BitSet p_one = Util.concatenate(p12, 32, p34, 32);
+            BitSet c_one = des.DesEncBlock(p_one, key, numRounds);
+
+            // delta_p = 20 00 00 00 00 00 00 00
+            BitSet delta_pL1 = Util.toBitSet(0x2000, 16);
+            BitSet delta_pL2 = Util.toBitSet(0x0000, 16);
+            BitSet delta_pR1 = Util.toBitSet(0x0000, 16);
+            BitSet delta_pR2 = Util.toBitSet(0x0000, 16);
+            BitSet delta_pL = Util.concatenate(delta_pL1, 16, delta_pL2, 16);
+            BitSet delta_pR = Util.concatenate(delta_pR1, 16, delta_pR2, 16);
+
+            BitSet delta_p = Util.concatenate(delta_pL, 32, delta_pR, 32);
+
+            // second pair
+            BitSet p_two = Util.copyBitSet(p_one, 64);
+            p_two.xor(delta_p);
+            BitSet c_two = des.DesEncBlock(p_two, key, numRounds);
+
+            BitSet delta_CR = c_one.get(32, 64);
+            delta_CR.xor(c_two.get(32, 64));
+
+            sets.add(new BitSet[] { c_one, c_two });
+
+        }
+        return sets;
     }
 
 }
