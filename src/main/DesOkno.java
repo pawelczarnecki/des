@@ -515,10 +515,10 @@ public class DesOkno extends JPanel {//implements ActionListener {
             BitSet p_one = Util.concatenate(p12, 32, p34, 32);
             BitSet c_one = des.DesEncBlock(p_one, key, numRounds);
 
-            // delta_p = 20 00 00 00 00 00 00 00
-            BitSet delta_pL1 = Util.toBitSet(0x2000, 16);
+            // delta_p = 40 5C 00 00 04 00 00 00
+            BitSet delta_pL1 = Util.toBitSet(0x405C, 16);
             BitSet delta_pL2 = Util.toBitSet(0x0000, 16);
-            BitSet delta_pR1 = Util.toBitSet(0x0000, 16);
+            BitSet delta_pR1 = Util.toBitSet(0x0400, 16);
             BitSet delta_pR2 = Util.toBitSet(0x0000, 16);
             BitSet delta_pL = Util.concatenate(delta_pL1, 16, delta_pL2, 16);
             BitSet delta_pR = Util.concatenate(delta_pR1, 16, delta_pR2, 16);
