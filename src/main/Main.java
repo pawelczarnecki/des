@@ -32,7 +32,7 @@ public class Main {
     private static void createAndShowGUI() {
         JFrame frame = new JFrame("DES");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(new Okno(), BorderLayout.CENTER);
+        frame.add(new DesOkno(), BorderLayout.CENTER);
 
         frame.pack();
         //frame.setSize(800, 600);

@@ -157,11 +157,11 @@ public class DifferentialCryptanalysis {
      *
      */
     public static void DesDifferentialAttack4Round() {
+        //DesOkno desOkno = new DesOkno();
         // do analysis for 4-round DES
-        int numRounds = 7;
+        int numRounds = 8;
 
-        // set the key
-        BitSet key1 = Util.toBitSet(0x1234, 16);
+        BitSet key1 = Util.toBitSet(0x1234 , 16);
         BitSet key2 = Util.toBitSet(0x8743, 16);
         BitSet key3 = Util.toBitSet(0xFAC3, 16);
         BitSet key4 = Util.toBitSet(0xECAB, 16);
@@ -171,8 +171,8 @@ public class DifferentialCryptanalysis {
 
         // print the actual key bits
         DesImpl des = new DesImpl();
-        BitSet K4 = des.KeySchedule(key, 7);
-        int numPairs = 100000; //16 dla 4
+        BitSet K4 = des.KeySchedule(key, numRounds);
+        int numPairs = 16; //16 dla 4
 
         // print info
         System.out.println(numRounds+"-round DES Linear Cryptanalysis.");
