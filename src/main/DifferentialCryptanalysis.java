@@ -159,7 +159,7 @@ public class DifferentialCryptanalysis {
     public static void DesDifferentialAttack4Round() {
         //DesOkno desOkno = new DesOkno();
         // do analysis for 4-round DES
-        int numRounds = 8;
+        int numRounds = 4;
 
         BitSet key1 = Util.toBitSet(0x1234 , 16);
         BitSet key2 = Util.toBitSet(0x8743, 16);
@@ -298,6 +298,7 @@ public class DifferentialCryptanalysis {
             System.out.println();
 
         }
+
 
     }
 }

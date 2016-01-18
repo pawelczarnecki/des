@@ -314,13 +314,23 @@ public class DesOkno extends JPanel {//implements ActionListener {
             System.out.println("Using Key:");
             Util.printBitSet(key, 64);
             System.out.println("****************");
-            System.out.println("Real round "+ numRounds+" key:");
+            System.out.println("Real round " + numRounds + " key:");
+        BitSet K4_S;
             for (int i = 0; i < 8; i++){
-                BitSet K4_S = K4.get(6*i, 6*(i+1));
+                K4_S = K4.get(6*i, 6*(i+1));
                 System.out.print("\tS-Box " + (i+1) + ":\t");
                 System.out.print(Integer.toHexString(Util.toInteger(K4_S, 6)) + " ");
                 System.out.println();
             }
+        jTextField4.setText(Integer.toHexString(Util.toInteger(K4.get(0, 6*(1)), 6)));
+        jTextField5.setText(Integer.toHexString(Util.toInteger(K4.get(6*1, 6*(2)), 6)));
+        jTextField6.setText(Integer.toHexString(Util.toInteger(K4.get(6*2, 6*(3)), 6)));
+        jTextField7.setText(Integer.toHexString(Util.toInteger(K4.get(6*3, 6*(4)), 6)));
+        jTextField8.setText(Integer.toHexString(Util.toInteger(K4.get(6*4, 6*(5)), 6)));
+        jTextField9.setText(Integer.toHexString(Util.toInteger(K4.get(6*5, 6*(6)), 6)));
+        jTextField10.setText(Integer.toHexString(Util.toInteger(K4.get(6*6, 6*(7)), 6)));
+        jTextField11.setText(Integer.toHexString(Util.toInteger(K4.get(6*7, 6*(8)), 6)));
+
             System.out.println("****************");
             System.out.println("Press Enter to run linear attack...");
             /*try {
@@ -407,6 +417,7 @@ public class DesOkno extends JPanel {//implements ActionListener {
             System.out.println("Best candidate subkeys are");
 
 
+        int[] tab = new int[8];
             for (int k = 0; k < 8; k++){
                 int maxi = 0;
                 double maxprob = 0;
@@ -421,16 +432,27 @@ public class DesOkno extends JPanel {//implements ActionListener {
                     if (prob[k][i] >= maxprob) {
                         maxprob = prob[k][i];
                         maxi = i;
+
                     }
                 }
 
                 System.out.println();
                 System.out.println();
-                System.out.println("S-Box " + (k+1) + " : " + Integer.toHexString(maxi) + " with bias " + maxprob);
+                tab[k]=maxi;
+                System.out.println("S-Box " + (k + 1) + " : " + Integer.toHexString(maxi) + " with bias " + maxprob);
                 System.out.println();
                 System.out.println();
 
             }
+        jTextField12.setText(Integer.toHexString(tab[0]));
+        jTextField13.setText(Integer.toHexString(tab[1]));
+        jTextField14.setText(Integer.toHexString(tab[2]));
+        jTextField15.setText(Integer.toHexString(tab[3]));
+        jTextField16.setText(Integer.toHexString(tab[4]));
+        jTextField17.setText(Integer.toHexString(tab[5]));
+        jTextField18.setText(Integer.toHexString(tab[6]));
+        jTextField19.setText(Integer.toHexString(tab[7]));
+
 
         }
 
@@ -469,11 +491,11 @@ public class DesOkno extends JPanel {//implements ActionListener {
     }
     public int GetRounds()
     {
-        return 5;// Integer.parseInt(jTextField2.getText());
+        return Integer.parseInt(jTextField2.getText());
     }
     public int GetPair()
     {
-        return 16;// Integer.parseInt(jTextField3.getText());
+        return Integer.parseInt(jTextField3.getText());
     }
     public static List<BitSet[]> generateRandomPairs(int pairs, BitSet key,
                                                      int numRounds) {
