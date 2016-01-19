@@ -1,4 +1,7 @@
-package main;
+package other;
+
+import main.DesImpl;
+import main.Util;
 
 import java.io.IOException;
 import java.util.ArrayList;

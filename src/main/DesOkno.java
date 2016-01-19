@@ -42,6 +42,9 @@ public class DesOkno extends JPanel {//implements ActionListener {
     private JTextField jTextField17;
     private JTextField jTextField18;
     private JTextField jTextField19;
+    private JTextField jTextField20;
+    private JTextField jTextField21;
+    private JTextField jTextField22;
     private JButton jButton1;
     private JPanel jPanel1;
 
@@ -69,6 +72,9 @@ public class DesOkno extends JPanel {//implements ActionListener {
         jTextField17 = new JTextField();
         jTextField18 = new JTextField();
         jTextField19 = new JTextField();
+        jTextField20 = new JTextField();
+        jTextField21 = new JTextField();
+        jTextField22 = new JTextField();
         jLabel1 = new JLabel();
         jLabel2 = new JLabel();
         jLabel3 = new JLabel();
@@ -159,50 +165,61 @@ public class DesOkno extends JPanel {//implements ActionListener {
                                 .addContainerGap()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                        .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                                                        .addComponent(jTextField2)
-                                                        .addComponent(jTextField1))
+                                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jLabel3)
-                                                        .addComponent(jLabel1)
-                                                        .addComponent(jLabel2)))
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                                        .addComponent(jLabel5)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(jTextField4))
-                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                                        .addComponent(jLabel6)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(jTextField5))
-                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                                        .addComponent(jLabel7)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(jTextField6))
-                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                                        .addComponent(jLabel8)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(jTextField7))
-                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                                        .addComponent(jLabel9)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(jTextField8))
-                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                                        .addComponent(jLabel10)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(jTextField9))
-                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                                        .addComponent(jLabel11)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel1)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel12)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(jLabel4))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                                                        .addComponent(jLabel5)
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                        .addComponent(jTextField4))
+                                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                                                        .addComponent(jLabel6)
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                        .addComponent(jTextField5))
+                                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                                                        .addComponent(jLabel7)
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                        .addComponent(jTextField6))
+                                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                                                        .addComponent(jLabel8)
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                        .addComponent(jTextField7))
+                                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                                                        .addComponent(jLabel9)
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                        .addComponent(jTextField8))
+                                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                                                        .addComponent(jLabel10)
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                        .addComponent(jTextField9))
+                                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                                                        .addComponent(jLabel11)
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                                .addComponent(jLabel12)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addComponent(jLabel4)
+                                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                                        .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                                                                        .addComponent(jTextField2))
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(jLabel2)
+                                                                        .addComponent(jLabel3))))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel13)
                                         .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -224,7 +241,10 @@ public class DesOkno extends JPanel {//implements ActionListener {
                                                 .addContainerGap()
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(jLabel1))
+                                                        .addComponent(jLabel1)
+                                                        .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -308,13 +328,13 @@ public class DesOkno extends JPanel {//implements ActionListener {
 
 
             // print info
-            System.out.println(numRounds+"-123round DES Linear Cryptanalysis.");
-            System.out.println("Using " + numPairs + " pairs.");
+            System.out.println(numRounds+"-rundowsa kryptoanaliza DES");
+            System.out.println("Dla " + numPairs + " par.");
             System.out.println("****************");
-            System.out.println("Using Key:");
+            System.out.println("Wykorzystywany klucz:");
             Util.printBitSet(key, 64);
             System.out.println("****************");
-            System.out.println("Real round " + numRounds + " key:");
+            System.out.println("Klucze rund " + numRounds + " :");
         BitSet K4_S;
             for (int i = 0; i < 8; i++){
                 K4_S = K4.get(6*i, 6*(i+1));
@@ -332,18 +352,12 @@ public class DesOkno extends JPanel {//implements ActionListener {
         jTextField11.setText(Integer.toHexString(Util.toInteger(K4.get(6*7, 6*(8)), 6)));
 
             System.out.println("****************");
-            System.out.println("Press Enter to run linear attack...");
-            /*try {
-                System.in.read();
-            } catch(IOException exn) {
 
-            }
-*/
             // generate the pairs
             System.out.println("");
-            System.out.println("Generating " + numPairs + " pairs...");
+            System.out.println("Generowanie " + numPairs + " par...");
             List<BitSet[]> pairs = generateRandomPairs(numPairs, key, numRounds);
-            System.out.println("Good pairs: " + pairs.size());
+            System.out.println("Dobre pary: " + pairs.size());
 
             int[][] counts = new int[8][64];
             for (int k = 0; k < 8; k++){
@@ -353,9 +367,6 @@ public class DesOkno extends JPanel {//implements ActionListener {
             }
 
             for (BitSet[] pair : pairs) {
-//      if (count++ % (numPairs / 100) == 0) {
-//        System.out.print(((int) (count / ((double) numPairs) * 100)) + "%\n");
-//      }
 
                 BitSet C1L = pair[0].get(0, 32);
                 BitSet C1R = pair[0].get(32, 64);
@@ -414,7 +425,7 @@ public class DesOkno extends JPanel {//implements ActionListener {
 
             System.out.println();
             System.out.println();
-            System.out.println("Best candidate subkeys are");
+            System.out.println("Najlepsi kandydaci");
 
 
         int[] tab = new int[8];
@@ -423,7 +434,7 @@ public class DesOkno extends JPanel {//implements ActionListener {
                 double maxprob = 0;
 
                 System.out.println();
-                System.out.println("Partial subkey bits : probability");
+                System.out.println("Czesciowe bity podkluczy: prawdopodobienstwo");
                 for (int i = 0; i < 64; i++) {
 
                     System.out.print(Integer.toHexString(i));
@@ -439,7 +450,7 @@ public class DesOkno extends JPanel {//implements ActionListener {
                 System.out.println();
                 System.out.println();
                 tab[k]=maxi;
-                System.out.println("S-Box " + (k + 1) + " : " + Integer.toHexString(maxi) + " with bias " + maxprob);
+                System.out.println("S-Box " + (k + 1) + " : " + Integer.toHexString(maxi) + " z prawdopodobienœtwem " + maxprob);
                 System.out.println();
                 System.out.println();
 
@@ -469,11 +480,12 @@ public class DesOkno extends JPanel {//implements ActionListener {
     }
     public BitSet GetKey()
     {
+
         String poczatek="0x";
-        String klucz1=poczatek+"1234";
-        String klucz2=poczatek+"8743";
-        String klucz3=poczatek+"FAC3";
-        String klucz4=poczatek+"ECAB";
+        String klucz1=poczatek+new String(jTextField1.getText());
+        String klucz2=poczatek+new String(jTextField20.getText());
+        String klucz3=poczatek+new String(jTextField21.getText());
+        String klucz4=poczatek+new String(jTextField22.getText());
 
         int set1= Integer.decode(klucz1);
         int set2= Integer.decode(klucz2);

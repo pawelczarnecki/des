@@ -1,4 +1,4 @@
-package main;
+package other;
 
 class CipherDesTest {
     public static void main(String[] a) {
