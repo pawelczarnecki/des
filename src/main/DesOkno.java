@@ -349,7 +349,7 @@ public class DesOkno extends JPanel {//implements ActionListener {
         jTextField8.setText(Integer.toHexString(Util.toInteger(K4.get(6*4, 6*(5)), 6)));
         jTextField9.setText(Integer.toHexString(Util.toInteger(K4.get(6*5, 6*(6)), 6)));
         jTextField10.setText(Integer.toHexString(Util.toInteger(K4.get(6*6, 6*(7)), 6)));
-        jTextField11.setText(Integer.toHexString(Util.toInteger(K4.get(6*7, 6*(8)), 6)));
+        jTextField11.setText(Integer.toHexString(Util.toInteger(K4.get(6 * 7, 6 * (8)), 6)));
 
             System.out.println("****************");
 
@@ -482,10 +482,10 @@ public class DesOkno extends JPanel {//implements ActionListener {
     {
 
         String poczatek="0x";
-        String klucz1=poczatek+new String(jTextField1.getText());
-        String klucz2=poczatek+new String(jTextField20.getText());
-        String klucz3=poczatek+new String(jTextField21.getText());
-        String klucz4=poczatek+new String(jTextField22.getText());
+        String klucz1=poczatek+ jTextField1.getText();
+        String klucz2=poczatek+ jTextField20.getText();
+        String klucz3=poczatek+ jTextField21.getText();
+        String klucz4=poczatek+ jTextField22.getText();
 
         int set1= Integer.decode(klucz1);
         int set2= Integer.decode(klucz2);
