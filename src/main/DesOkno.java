@@ -8,7 +8,7 @@ import java.util.BitSet;
 import java.util.List;
 import java.util.Random;
 
-public class DesOkno extends JPanel {//implements ActionListener {
+public class DesOkno extends JPanel {
 
     private JLabel jLabel1;
     private JLabel jLabel2;
@@ -322,12 +322,11 @@ public class DesOkno extends JPanel {//implements ActionListener {
 
             int numRounds = GetRounds();
             BitSet key=GetKey();
-            int numPairs = GetPair(); //16 dla 4
+            int numPairs = GetPair();
             DesImpl des = new DesImpl();
             BitSet K4 = des.KeySchedule(key, numRounds);
 
 
-            // print info
             System.out.println(numRounds+"-rundowsa kryptoanaliza DES");
             System.out.println("Dla " + numPairs + " par.");
             System.out.println("****************");
@@ -353,7 +352,6 @@ public class DesOkno extends JPanel {//implements ActionListener {
 
             System.out.println("****************");
 
-            // generate the pairs
             System.out.println("");
             System.out.println("Generowanie " + numPairs + " par...");
             List<BitSet[]> pairs = generateRandomPairs(numPairs, key, numRounds);
@@ -373,11 +371,9 @@ public class DesOkno extends JPanel {//implements ActionListener {
                 BitSet C2L = pair[1].get(0, 32);
                 BitSet C2R = pair[1].get(32, 64);
 
-                // calculate the input of S-Boxes - Round 4
                 BitSet W1 = des.E(C1R);
                 BitSet W2 = des.E(C2R);
 
-                // calculate the output of S-Boxes - Round 4
                 BitSet delta_D = Util.copyBitSet(C1L, 32);
                 delta_D.xor(C2L);
                 BitSet delta_Y = des.PermuteCInv(delta_D);
@@ -385,23 +381,19 @@ public class DesOkno extends JPanel {//implements ActionListener {
 
                 for (int sbox = 0; sbox < 8; sbox++){
                     for (int i = 0; i < 64; i++) {
-                        // guess the key for Sbox
                         BitSet partialSubkeyGuess = Util.toBitSet(i, 6);
 
-                        // inputs to the S-Box
                         BitSet X1 = W1.get(6*sbox,6*(sbox+1));
                         X1.xor(partialSubkeyGuess);
                         BitSet X2 = W2.get(6*sbox,6*(sbox+1));
                         X2.xor(partialSubkeyGuess);
 
-                        // calculate predicted output of S-Box
                         BitSet pred_Y1 = des.SBoxSingle(sbox, X1);
                         BitSet pred_Y2 = des.SBoxSingle(sbox, X2);
 
                         BitSet pred_deltaY = Util.copyBitSet(pred_Y1, 4);
                         pred_deltaY.xor(pred_Y2);
 
-                        // check for a match with original delta_Y
                         BitSet orig_deltaY = delta_Y.get(4*sbox,8*(sbox+1));
 
                         boolean lhs = Util.equalsBitSet(pred_deltaY, orig_deltaY, 4);
@@ -413,7 +405,6 @@ public class DesOkno extends JPanel {//implements ActionListener {
                 }
             }
 
-            // 5 - determine the probabilities
             double[][] prob = new double[8][64];
             for (int k = 0; k < 8; k++){
                 for (int i = 0; i < 64; i++) {
@@ -421,7 +412,6 @@ public class DesOkno extends JPanel {//implements ActionListener {
                 }
             }
 
-            // 6 - print the results
 
             System.out.println();
             System.out.println();
@@ -515,7 +505,6 @@ public class DesOkno extends JPanel {//implements ActionListener {
         DesImpl des = new DesImpl();
         List<BitSet[]> sets = new ArrayList<BitSet[]>();
         for (int i = 0; i < pairs; i++) {
-            // four bloks of 16 bits each
             BitSet p1 = Util.toBitSet(r.nextInt(65536), 16);
             BitSet p2 = Util.toBitSet(r.nextInt(65536), 16);
             BitSet p3 = Util.toBitSet(r.nextInt(65536), 16);
@@ -523,21 +512,19 @@ public class DesOkno extends JPanel {//implements ActionListener {
             BitSet p12 = Util.concatenate(p1, 16, p2, 16);
             BitSet p34 = Util.concatenate(p3, 16, p4, 16);
 
-            // first pair
             BitSet p_one = Util.concatenate(p12, 32, p34, 32);
             BitSet c_one = des.DesEncBlock(p_one, key, numRounds);
 
-            // delta_p = 40 5C 00 00 04 00 00 00
-            BitSet delta_pL1 = Util.toBitSet(0x405C, 16);
-            BitSet delta_pL2 = Util.toBitSet(0x0000, 16);
-            BitSet delta_pR1 = Util.toBitSet(0x0400, 16);
-            BitSet delta_pR2 = Util.toBitSet(0x0000, 16);
+            // delta_p = 04 04 07 80 00 20 20 00
+            BitSet delta_pL1 = Util.toBitSet(0x0404, 16);
+            BitSet delta_pL2 = Util.toBitSet(0x0780, 16);
+            BitSet delta_pR1 = Util.toBitSet(0x0020, 16);
+            BitSet delta_pR2 = Util.toBitSet(0x2000, 16);
             BitSet delta_pL = Util.concatenate(delta_pL1, 16, delta_pL2, 16);
             BitSet delta_pR = Util.concatenate(delta_pR1, 16, delta_pR2, 16);
 
             BitSet delta_p = Util.concatenate(delta_pL, 32, delta_pR, 32);
 
-            // second pair
             BitSet p_two = Util.copyBitSet(p_one, 64);
             p_two.xor(delta_p);
             BitSet c_two = des.DesEncBlock(p_two, key, numRounds);
